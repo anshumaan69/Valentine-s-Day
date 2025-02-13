@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Love for You, Gunnu</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            color: white;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow: hidden;
+            position: relative;
+        }
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 80%;
+            width: 100%;
+        }
+        .text-container {
+            flex: 1;
+            text-align: left;
+            font-size: 1.5rem;
+        }
+        .typewriter {
+            white-space: pre-wrap;
+            overflow: hidden;
+            display: inline-block;
+            border-right: 3px solid white;
+            width: 0;
+            animation: typing 4s steps(50, end) forwards, blink 0.75s step-end infinite;
+        }
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+        .image-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+        img {
+            max-width: 90%;
+            height: auto;
+            border-radius: 15px;
+            animation: fadeIn 3s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .heart-container {
+            position: absolute;
+            top: 10%;
+            right: 10%;
+            font-size: 3rem;
+            color: red;
+            animation: heartbeat 1.5s infinite;
+        }
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        .floating-dots {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+        .dot {
+            position: absolute;
+            bottom: 0;
+            width: 5px;
+            height: 5px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: floatUp 5s infinite ease-in;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-100vh); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-dots"></div>
+    <div class="heart-container">❤️</div>
+    <div class="container">
+        <div class="text-container">
+            <div class="typewriter" id="message"></div>
+        </div>
+        <div class="image-container">
+            <img src="./image.png" alt="Us Together">
+        </div>
+    </div>
+    
+    <script>
+        const text = "HAPPY VALENTINE's DAY\n\nGunnu, you are the light of my life, my happiness, my everything.\n\n Your intellect and hard work inspire me daily. I love feeding you with my hands and being the reason for your smile. \n\n No matter what, I will always stand by your side, wishing for your best and supporting you forever.\n\n I'm sorry for the stupid things I do sometimes, but know that every mistake comes with a heart full of love for you. \n\n I will always cherish you, respect you, and love you endlessly. \n\n You are my heart and soul, my forever. Happy Valentine's Day, my love!";
+        let i = 0;
+        function typeWriter() {
+            if (i < text.length) {
+                document.getElementById("message").innerHTML += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 40);
+            }
+        }
+        typeWriter();
+        
+        function createDots() {
+            const container = document.querySelector('.floating-dots');
+            for (let i = 0; i < 50; i++) {
+                let dot = document.createElement('div');
+                dot.classList.add('dot');
+                dot.style.left = `${Math.random() * 100}%`;
+                dot.style.animationDuration = `${3 + Math.random() * 3}s`;
+                container.appendChild(dot);
+            }
+        }
+        createDots();
+    </script>
+</body>
+</html>
